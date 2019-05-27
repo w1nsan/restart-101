@@ -111,6 +111,30 @@ ggplot(bcrabl, aes(x = mol.biol, y = age)) + geom_boxplot()
 > Bioconductor是一个包含了150多个统计和组学**数据包的集合**，最初为芯片数据开发，现在支持 bulk and single-cell RNA-seq, ChIP seq, copy number analysis, microarray methylation and classic expression analysis, flow cytometry等等
 
 ### Bioconductor官网
- https://bioconductor.org
 
-在官网中你可以查询到不同package的详细内容和安装方法
+在[官网](https://bioconductor.org/packages)中你可以查询到不同package的详细内容和安装方法
+
+### 如何通过 biocondunctor 安装包
+
+#### 首先安装 BiocManager
+```r
+if (!"BiocManager" %in% rownames(intalled.packages()))
+    install.packages("BiocManager", repos="https://cran.r-project.org")
+# 从 CRAN 中下载安装
+```
+
+#### 安装相应的包
+
+
+语句`BiocManager::install(c("package1","package2",...,...))`
+```r
+BiocManager::install(c("rtracklayer", "GenomicRanges"))
+# 安装"rtracklayer", "GenomicRanges"这两个包
+# R会自动安装这两个包所依赖的包，超方便
+# 安装DESeq包，后续会用到很重要的一个分析包
+BiocManager::install("DESeq2")
+```
+
+`bioconductor` 中有一个包很重要 `vignettes`,这个包的功能可以用来定义**某一个包的用法**
+
+####  学习与基因组坐标相关的用法
